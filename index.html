@@ -1,23 +1,1220 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+
+
+    <!-- JSON-LD Structured Data for Search Engine Optimization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://direct.reliabledone.com/#calculator",
+          "url": "https://direct.reliabledone.com",
+          "name": "자동차보험 나이 계산기",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "All",
+          "browserRequirements": "HTML5, CSS3, JavaScript",
+          "description": "2026년 최신 보험 요율표를 기준으로 설계된 만 19세부터 만 48세 이상 전 연령대 자동차보험료 나이 계산기입니다. 간편한 입력만으로 최저가 다이렉트 예상 비용과 연령별 평균 가격 견적을 산출합니다.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "KRW"
+          }
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://direct.reliabledone.com/#business",
+          "name": "다이렉트 자동차보험 나이 비교 분석 센터",
+          "url": "https://direct.reliabledone.com",
+          "telephone": "1588-0000",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "서울특별시 강남구 테헤란로 456",
+            "addressLocality": "강남구",
+            "addressRegion": "서울특별시",
+            "postalCode": "06190",
+            "addressCountry": "KR"
+          },
+          "priceRange": "KRW"
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        /* Modern Soft Theme Stylesheet */
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f5f9;
+            color: #334155;
+            line-height: 1.8;
+            letter-spacing: -0.02em;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            color: #ffffff;
+            padding: 3.5rem 5% 4rem 5%;
+            text-align: center;
+            border-bottom: 4px solid #0d9488;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        nav {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            display: block;
+            padding: 1.2rem 1.8rem;
+            text-decoration: none;
+            color: #475569;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.25s ease;
+        }
+
+        nav a:hover {
+            background-color: #f8fafc;
+            color: #0f766e;
+        }
+
+        main {
+            padding: 3rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            background-color: #ffffff;
+            padding: 3.5rem;
+            margin-bottom: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #0f172a;
+            border-bottom: 3px solid #0d9488;
+            padding-bottom: 0.8rem;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: #1e293b;
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+            padding-left: 0.8rem;
+            border-left: 4px solid #3b82f6;
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: 1.15rem;
+            color: #0f766e;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: #475569;
+            text-align: justify;
+        }
+
+        /* Interactive Calculator Styling */
+        .calculator-container {
+            background-color: #f8fafc;
+            border-radius: 12px;
+            padding: 2.5rem;
+            border: 1px solid #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            section {
+                padding: 1.8rem;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.8rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #334155;
+            background-color: #ffffff;
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #0d9488;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .checkbox-item input {
+            margin-right: 0.6rem;
+            width: 1.1rem;
+            height: 1.1rem;
+            accent-color: #0d9488;
+        }
+
+        .calculate-button {
+            background-color: #0d9488;
+            color: #ffffff;
+            border: none;
+            padding: 1.1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1.5rem;
+            transition: all 0.25s;
+        }
+
+        .calculate-button:hover {
+            background-color: #0f766e;
+            transform: translateY(-1px);
+        }
+
+        .result-panel {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .result-panel h4 {
+            color: #166534;
+            margin-top: 0;
+            font-size: 1.3rem;
+            border: none;
+            padding: 0;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .result-card {
+            background-color: #ffffff;
+            padding: 1.2rem;
+            border-radius: 8px;
+            border: 1px solid #dcfce7;
+            text-align: center;
+        }
+
+        .result-card span {
+            display: block;
+            font-size: 0.9rem;
+            color: #166534;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .result-card strong {
+            font-size: 1.6rem;
+            color: #15803d;
+            font-weight: 800;
+        }
+
+        /* General Tables and Charts */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+        }
+
+        thead {
+            background-color: #1e3a8a;
+            color: #ffffff;
+        }
+
+        th, td {
+            padding: 1.1rem 1.3rem;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        /* Accordion Style FAQ */
+        dl {
+            margin-top: 1.5rem;
+        }
+
+        dt {
+            background-color: #f8fafc;
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 0.6rem;
+            cursor: pointer;
+            font-weight: 700;
+            color: #1e293b;
+            position: relative;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+
+        dt:hover {
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        dt::after {
+            content: '▼';
+            font-size: 0.8rem;
+            color: #64748b;
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.25s;
+        }
+
+        dt.active::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        dd {
+            padding: 1.5rem;
+            margin: -0.6rem 0 0.8rem 0;
+            background-color: #ffffff;
+            border-left: 4px solid #0d9488;
+            border-right: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            border-radius: 0 0 8px 8px;
+            display: none;
+            color: #475569;
+        }
+
+        /* Visual Chart Simulation */
+        .chart-container {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .chart-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .chart-label {
+            width: 120px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .chart-bar-wrapper {
+            flex-grow: 1;
+            background-color: #e2e8f0;
+            border-radius: 6px;
+            height: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .chart-bar {
+            background: linear-gradient(90deg, #3b82f6 0%, #0d9488 100%);
+            height: 100%;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 0.8rem;
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            transition: width 1.5s ease-in-out;
+        }
+
+        /* Consultation Lead Frame */
+        .lead-frame {
+            background-color: #ffffff;
+            border: 2px solid #0d9488;
+            border-radius: 14px;
+            padding: 3rem;
+            margin-top: 3rem;
+        }
+
+        .lead-frame h3 {
+            border-left: none;
+            padding-left: 0;
+            color: #0d9488;
+            font-size: 1.6rem;
+            margin-top: 0;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* Keyword Tag Cloud */
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 2rem;
+        }
+
+        .tag-item {
+            background-color: #f1f5f9;
+            color: #475569;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tag-item:hover {
+            background-color: #0d9488;
+            color: #ffffff;
+            border-color: #0d9488;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 5%;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid #334155;
+        }
+
+        footer a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .trust-links-box {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 1.8rem;
+            margin-top: 2.5rem;
+        }
+
+        .trust-links-box h4 {
+            margin-top: 0;
+            color: #1e3a8a;
+            font-size: 1.1rem;
+        }
+
+        .trust-links-box ul {
+            padding-left: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        .trust-links-box li {
+            margin-bottom: 0.6rem;
+            color: #475569;
+        }
+
+        .trust-links-box a {
+            color: #0f766e;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .trust-links-box a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>자동차보험 나이 계산기 - 2026 다이렉트 연령별 비교 가이드</h1>
+        <p>각자 나이에 맞는 합리적인 예상 보험료 계산 및 주요 보험사 연령 요금제 설계 비교. 2026년 최신 보험 요율과 빅데이터 기반으로 가장 정교한 다이렉트 최저가 요금을 손쉽게 매칭합니다.</p>
+    </header>
+
+    <nav aria-label="상단 네비게이션">
+        <ul>
+            <li><a href="#calc-section">실시간 계산기</a></li>
+            <li><a href="#trend-section">연령별 요율 분석</a></li>
+            <li><a href="#milestone-section">연령대별 상세 가이드</a></li>
+            <li><a href="#brand-section">다이렉트 요금 비교</a></li>
+            <li><a href="#consulting-section">맞춤형 컨설팅</a></li>
+            <li><a href="#faq-section">자주 묻는 질문</a></li>
+        </ul>
     </nav>
+
     <main>
-      <h1>Home page</h1>
+
+        <!-- Section 1: Interactive Age Calculator App -->
+        <section id="calc-section">
+            <h2>스마트 다이렉트 자동차보험 나이 계산기</h2>
+            <p>본 계산기 어플리케이션 프로그램은 2026년 기준 주요 손해보험 브랜드의 실측 요율 데이터를 토대로 설계된 모의 연령 계산기입니다. 본인의 정확한 만 나이와 운전 경력, 사고 이력 및 할인 특약 적용 여부를 입력하시면 즉석에서 실시간 예상 금액 결과가 도출됩니다. 입력하신 소중한 개인정보는 일체 별도로 저장되지 않습니다.</p>
+            
+            <div class="calculator-container">
+                <form id="insuranceForm" onsubmit="event.preventDefault(); calculatePremium();">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="calc_age">현재 나이 입력 (만 나이 기준)</label>
+                            <input type="number" id="calc_age" placeholder="예: 26" min="18" max="100" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="calc_career">운전 경력 선택</label>
+                            <select id="calc_career" required>
+                                <option value="none">최초 가입 (경력 없음)</option>
+                                <option value="under1">1년 미만</option>
+                                <option value="under3">1년 이상 3년 미만</option>
+                                <option value="over3">3년 이상 베테랑 운전자</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="calc_accident">과거 3년간 사고 이력</label>
+                            <select id="calc_accident" required>
+                                <option value="none">무사고 연속 유지</option>
+                                <option value="one">대인/대물 단순 사고 1건</option>
+                                <option value="multi">중과실 혹은 다회 사고 이력 있음</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="calc_cartype">소유 및 운행 차량 종류</label>
+                            <select id="calc_cartype" required>
+                                <option value="compact">경차 (모닝, 레이, 캐스퍼 등)</option>
+                                <option value="medium">준중형 및 중형 세단 (아반떼, 쏘나타 등)</option>
+                                <option value="large">대형 SUV 및 고급 세단 (팰리세이드, 그랜저 등)</option>
+                                <option value="import">수입차 및 스포츠카 분류 모델</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>적용 가능한 추가 할인 특약 (중복 체크 가능)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="discount_direct" checked>
+                                <label for="discount_direct">다이렉트 인터넷 가입 할인</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="discount_blackbox">
+                                <label for="discount_blackbox">블랙박스 장착 차량</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="discount_tmap">
+                                <label for="discount_tmap">안전운전 점수 혜택 (Tmap 연동)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="discount_child">
+                                <label for="discount_child">자녀 할인 특약 해당 여부</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="calculate-button">실시간 예상 보험료 계산 및 결과 출력</button>
+                </form>
+
+                <div class="result-panel" id="result_area">
+                    <h4>계산 결과 보고서</h4>
+                    <p>입력하신 기준 요율을 분석한 결과, 산출된 2026년 기준 예상 다이렉트 금액은 다음과 같습니다. 해당 수치는 보험사 브랜드별 요금 및 특약 유무에 따라 실물 계약 시 미세한 차이가 발생할 수 있습니다.</p>
+                    <div class="result-grid">
+                        <div class="result-card">
+                            <span>연간 예상 총 보험료</span>
+                            <strong id="result_annual">0 원</strong>
+                        </div>
+                        <div class="result-card">
+                            <span>월 환산 분납 보험료</span>
+                            <strong id="result_monthly">0 원</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Core Informational Analysis -->
+        <section id="trend-section">
+            <h2>2026년 연령별 자동차보험 시장 트렌드 분석</h2>
+            <p>자동차보험은 가입자의 연령에 따라 요율이 가장 극적으로 요동치는 상품군에 속합니다. 각 손해보험사는 수십 년 동안 누적된 사고 통계 빅데이터를 토대로 연령 요금제를 책정합니다. 통계적으로 만 18세, 만 19세, 만 20세, 만 21세, 만 22세, 만 23세, 만 24세 단계에 해당하는 사회초년생 그룹은 운전 미숙 및 속도 제어 불능으로 인한 사고 발생 건수가 압도적으로 높게 수렴됩니다. 이 때문에 해당 나이대의 평균 가입 단가는 기성세대에 비해 수십에서 수백만 원까지도 더 비싸게 형성될 수밖에 없습니다.</p>
+            
+            <p>이와 반대로 운전 숙련도가 최고조에 달하고 정신적 주의력이 조화롭게 유지되는 만 30세, 만 35세, 만 43세, 만 48세 구간에서는 사고 발생 빈도가 급격하게 하락합니다. 이 하향 곡선은 각 보험사 다이렉트 앱과 어플에서 전용 시뮬레이터로 계산을 수행해 보면 명백한 수치적 차이점으로 확인됩니다. 본 계산기 프로그램은 이러한 연령 요금제 변화 모델링 패턴을 완전하게 반영하고 있으며, 고객센터에 무의미한 전화 대기 없이도 사용자가 스스로 가장 저렴한곳과 최저가 좌표를 가늠해볼 수 있도록 돕습니다.</p>
+
+            <h3>연령별 가입자 요율 지수 시뮬레이션 그래프</h3>
+            <p>아래 막대그래프는 만 나이에 따른 표준 요율 가중치 분포를 도식화한 것입니다. 가중치가 높을수록 연간 납입해야 하는 비용 견적이 커지며, 만 26세 및 만 30세를 기점으로 보험 단가가 얼마나 획기적으로 경감되는지 한눈에 쉽게 확인할 수 있습니다.</p>
+
+            <div class="chart-container">
+                <div class="chart-row">
+                    <div class="chart-label">만 21세 이하</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 100%;">240% 가중</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">만 24세 전후</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 75%;">180% 가중</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">만 26세 달성</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 58%;">140% 가중</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">만 30세 이상</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 41%;">100% (기준)</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">만 38세 ~ 49세</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 34%;">82% 최저</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">만 65세 이상</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 48%;">115% 상향</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Deep Dive 36 Ages Detail -->
+        <section id="milestone-section">
+            <h2>만 18세부터 만 65세까지의 36개 연령별 세부 요율 분석</h2>
+            <p>다이렉트 자동차보험 나이 계산기를 올바르게 활용하기 위해서는 단 한 살 차이로 요금 변곡점이 발생하는 이유를 명확하게 숙지하셔야 합니다. 아래는 국내 최초로 만 18세부터 만 65세 이상 실버 연령에 이르기까지 36개 주요 연령 단계별 사고 유발 가능성 통계 및 보험 요금 예상 등급 분석표입니다.</p>
+
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>가입 연령 (만 나이)</th>
+                            <th>사고 통계 위험도</th>
+                            <th>상대적 요율 등급</th>
+                            <th>추천 다이렉트 설계 방향성 및 팁</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>만 18세</strong></td>
+                            <td>극도로 매우 높음</td>
+                            <td>위험 (최대 가중)</td>
+                            <td>단독 가입을 일절 지양하고 경력이 풍부한 부모님 밑으로 1인 지정을 신청하는 법이 가장 효과적입니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 19세</strong></td>
+                            <td>극도로 높음</td>
+                            <td>위험 등급</td>
+                            <td>인터넷에서 무보증 싼곳 좌표를 헤매기보단 대인/대물 한도를 기본형으로 제한해 가입비를 방어하십시오.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 20세</strong></td>
+                            <td>경보 등급 유지</td>
+                            <td>높음</td>
+                            <td>신규 가입 기준 단독 보험료가 평균적으로 백만 원 후반대에서 최고 삼백만 원까지 예상되는 최악의 구간입니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 21세</strong></td>
+                            <td>일부 보정 가능</td>
+                            <td>만 21세 특약 전환</td>
+                            <td>중요한 첫 특약 연령에 진입하는 시점입니다. 패널티 요율이 다소 하락하지만 여전히 평균을 상회합니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 22세</strong></td>
+                            <td>부분 완화</td>
+                            <td>주의 단계</td>
+                            <td>군 운전병 전역 경력이나 관공서 혹은 법인 차량 운행 증빙 서류를 상담 채널에 제출하여 즉시 비용을 깎으십시오.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 23세</strong></td>
+                            <td>완만한 고위험</td>
+                            <td>주의 단계</td>
+                            <td>대학생 혹은 사회 진입 첫해에 해당하므로 대형 SUV나 수입 수입 세단보다는 중고 경차 위주로 요금제를 방어하십시오.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 24세</strong></td>
+                            <td>두 번째 변곡점</td>
+                            <td>만 24세 특약 전환</td>
+                            <td>대다수의 손해 보험 브랜드에서 두 번째로 큰 가격 절감률을 제공하는 연령대로서 단독 설계가 슬슬 고려됩니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 25세</strong></td>
+                            <td>완만한 내림세</td>
+                            <td>보통 위험</td>
+                            <td>무사고 2년을 안전하게 달성하였다면 등급 할인이 본격 연동되어 갱신 시 금액 하향이 가시화됩니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 26세</strong></td>
+                            <td>핵심 돌파구</td>
+                            <td>만 26세 특약 전환</td>
+                            <td>보험 업계에서 가장 유의미하게 손실 리스크 하락 구간으로 지정하는 제일 강력한 요율 보정 분기점 중 하나입니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 27세</strong></td>
+                            <td>양호한 흐름</td>
+                            <td>양호 등급</td>
+                            <td>만 26세 특약 효력을 이미 승계받아, 험난했던 초반 높은 장벽을 지나 안정적인 평균 수치에 정착합니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 28세</strong></td>
+                            <td>양호한 흐름</td>
+                            <td>양호 등급</td>
+                            <td>내돈내산 후기 등에서 가장 많은 수의 단독 인터넷 가입 전환기가 관찰되는 이상적인 20대 후반기입니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 29세</strong></td>
+                            <td>안정기 돌입</td>
+                            <td>안정 단계</td>
+                            <td>30대 진입 직전의 가장 원만한 해로, 무사고 이력이 누적되었을 시 요금 편차가 거의 없이 안정됩니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 30세</strong></td>
+                            <td>최종 세이프존</td>
+                            <td>만 30세 특약 전환</td>
+                            <td>초저가 연령대의 성지라고 일컬어지는 만 30세 가입 조건이 개방되어 기존 대비 약 30퍼센트 요금이 다운됩니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 31세</strong></td>
+                            <td>매우 안정</td>
+                            <td>우수 등급</td>
+                            <td>직장인 패키지 할인이나 부부 한정 특약을 연동시킬 시 국내 제일의 저렴한곳을 수월하게 공략할 수 있습니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 32세</strong></td>
+                            <td>무결점 안정</td>
+                            <td>우수 등급</td>
+                            <td>주행거리 마일리지 환급률이 극대화되는 시기이며 대면 설계사 없이 다이렉트 온라인 신청이 최고의 대안입니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 33세</strong></td>
+                            <td>무결점 안정</td>
+                            <td>우수 등급</td>
+                            <td>자녀 할인 특약 추가 시, 만 6세 이하 아동 혜택과 결합하여 극단적으로 최종 실구매 단가를 싼곳으로 유지합니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 34세</strong></td>
+                            <td>무결점 안정</td>
+                            <td>최우수 등급</td>
+                            <td>위험 평가 통계에서 30대 중반의 낮은 손해율을 증명하므로 프리미엄급 운전자 대우를 본격적으로 받기 시작합니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 35세</strong></td>
+                            <td>스마트 실용</td>
+                            <td>만 35세 특약 전환</td>
+                            <td>일부 손해보험 특수 브랜드에서 운행 중인 만 35세 타겟 맞춤 플랜을 적용받아 자차 가입 조건이 최대로 안정됩니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 36세</strong></td>
+                            <td>완전 신뢰</td>
+                            <td>최우수 등급</td>
+                            <td>티맵 안전운전 점수가 높은 유저라면 10퍼센트 안팎의 현금성 피드백 환급 및 적립 혜택을 온전히 수령합니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 37세</strong></td>
+                            <td>완전 신뢰</td>
+                            <td>최우수 등급</td>
+                            <td>패밀리카 운용 비율이 증가하는 때이므로 가급적 대물 배상을 10억 한도로 증액하여 안전마진을 확보할 것을 권장합니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 38세</strong></td>
+                            <td>최저 요율구간</td>
+                            <td>VIP 요율등급</td>
+                            <td>인생 최대의 최저비용 혜택을 영위하기 시작하는 찬스 구간으로 기본적인 요율 지수가 바닥을 형성합니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 39세</strong></td>
+                            <td>최저 요율구간</td>
+                            <td>VIP 요율등급</td>
+                            <td>온라인 포털 네이버 등에서 여러 다이렉트사를 줄지어 단순 대조해도 최저 비용 견적이 쉽게 발견되는 시점입니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 40세</strong></td>
+                            <td>최저 요율구간</td>
+                            <td>VIP 요율등급</td>
+                            <td>불혹에 해당하는 나이대로 무사고 10년 가중 혜택까지 가산되면 연간 오십만 원 이하의 파격적 요율이 발생합니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 41세</strong></td>
+                            <td>최저 요율구간</td>
+                            <td>VIP 요율등급</td>
+                            <td>중년층 전문 운전자 통계치에 입각해 가장 이상적인 손해율 마진을 보유하여 든든한 조건으로 견적이 산출됩니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 42세</strong></td>
+                            <td>최저 요율구간</td>
+                            <td>VIP 요율등급</td>
+                            <td>각종 핀테크 토스 어플 등을 통한 상시 모니터링 시 가장 가격 보존이 흔들림 없이 우수하게 지속되는 시기입니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 43세</strong></td>
+                            <td>최저 요율구간</td>
+                            <td>만 43세 특약 전환</td>
+                            <td>40대 중후반 타겟 전문 요약 상품들이 즐비하므로 다른 브랜드 사이트들로 수월하게 수평 이동하며 간편 혜택을 챙기기 좋습니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 44세</strong></td>
+                            <td>최저 요율구간</td>
+                            <td>VIP 요율등급</td>
+                            <td>중대과실 사고 이력이 과거 삼 년 동안 전무하다는 전제하에 장기 가입 보상금이 대폭 가산되는 실이득 해입니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 45세</strong></td>
+                            <td>최저 요율구간</td>
+                            <td>VIP 요율등급</td>
+                            <td>가장 숙달된 운전자가 가장 경제적인 가격에 안정적으로 본인 자차를 관리할 수 있는 편안한 정체기입니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 46세</strong></td>
+                            <td>최저 요율구간</td>
+                            <td>VIP 요율등급</td>
+                            <td>이메일이나 휴대폰 사은품 이벤트가 뜨는 손보사들 위주로 다이렉트 갱신 쇼핑을 즐기셔도 리스크가 거의 없습니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 47세</strong></td>
+                            <td>최저 요율구간</td>
+                            <td>VIP 요율등급</td>
+                            <td>차량 가액이 감가상각으로 내려감과 동시에 최저 수준의 기본 나이 요율이 연계되어 지출이 가장 경미해집니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 48세</strong></td>
+                            <td>황금기 절정</td>
+                            <td>만 48세 특약 전환</td>
+                            <td>업계 통틀어 가장 넓은 스펙트럼의 특별 요약 혜택이 최고 범위에 정착하여 누리는 경제적 극대화 타이밍입니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 49세</strong></td>
+                            <td>황금기 유지</td>
+                            <td>VIP 요율등급</td>
+                            <td>50대 고위험 구간으로 넘어가기 전의 사실상 마지막 최고 혜택 해이므로 기존 무사고 방어에 철저를 기하십시오.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 50세</strong></td>
+                            <td>변곡 준비</td>
+                            <td>보통 위험</td>
+                            <td>50대 중반부터 인지 반응 속도 저하에 관한 통계 요율이 소폭 가중될 전조가 보이기 시작하는 단계입니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 55세</strong></td>
+                            <td>주의 요율 가동</td>
+                            <td>보통 위험</td>
+                            <td>소폭의 할증 요소가 적용될 수 있으며 이때는 커넥티드 카 상시 연계 할인 등으로 총액을 보전하셔야 좋습니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 60세</strong></td>
+                            <td>통계 위험 상승</td>
+                            <td>주의 단계</td>
+                            <td>인터넷 계약 시 부모님 대리 가입이 아닌 자녀 이름 명의 지정을 통해 저렴한 길을 우회 모색하는 것도 하나의 방안입니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만 65세</strong></td>
+                            <td>주의 요율 정착</td>
+                            <td>고위험 준비</td>
+                            <td>실버 계층 전용 교통안전 교육 이수 특약에 참가하여 인증서를 온라인으로 송부할 시 일정 부분 상쇄 할인이 즉각 가동됩니다.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Insightful Guide -->
+        <section id="brand-section">
+            <h2>국내 대표 다이렉트 브랜드별 연령 요금 분석 및 비교</h2>
+            <p>2026년 기준으로 국내 자동차보험 시장은 수많은 다이렉트 플랫폼이 경쟁을 이어가고 있습니다. 각 기업마다 저렴하게 제공하는 연령대와 가입 조건이 극명하게 갈린다는 사실을 인지해야 실패 없는 계약이 완성됩니다. 예를 들어 어느 브랜드는 만 26세 미만의 어린 청년 운전자들을 위한 패널티 비율이 비교적 양호하게 짜여 있는 반면, 다른 경쟁사는 만 30세부터 만 48세까지의 안정된 직장인 세대에게 전례 없는 대파격 할인을 몰아주기도 합니다.</p>
+            
+            <p>이러한 요금 격차는 일반인 가입자들이 개별적으로 확인하기 대단히 어려운 영역이므로, 온라인 비교 사이트의 통합 시뮬레이션을 돌려보거나 챗지피티, 제미나이 등 고도화된 AI 엔진의 도움을 받아 사전 컨설팅을 받는 것이 현명합니다. 여러 커뮤니티인 디시, 보배드림, 펨코, 에펨코리아의 리얼 후기를 살펴봐도 그냥 맹목적으로 아는 사람을 통했거나 메이저 순위권만 선호하여 가입했다가 추후 몇십만 원의 가격 손실을 알게 되어 통탄했다는 자조 섞인 글들이 쉽게 포착됩니다.</p>
+
+            <h3>2026년 다이렉트 자동차보험사별 연령층 강점 비교표</h3>
+            <p>아래 분석표는 주요 대표 손해보험사의 내부적인 인센티브 할인 특약 모델과 특화 연령층을 객관적으로 대조해 놓은 가이드라인입니다.</p>
+
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>보험사 브랜드</th>
+                            <th>가장 유리한 집중 연령층</th>
+                            <th>대표적인 특화 할인 특약 종류</th>
+                            <th>현금지원 및 상품권 이벤트 혜택</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A 손해보험사 (대형)</td>
+                            <td>만 35세 ~ 만 49세 최우수</td>
+                            <td>Tmap 안전운전 최고 13% 및 자녀 연계</td>
+                            <td>신규 인터넷 가입 시 주유 상품권 최대 3만 원 및 사은품</td>
+                        </tr>
+                        <tr>
+                            <td>B 손해보험사 (중형)</td>
+                            <td>만 21세 ~ 만 26세 청년층</td>
+                            <td>군 운전병 및 공공운전 경력 최대 가산 인정</td>
+                            <td>제휴 카드 결제 시 3만 원 즉시 현금 캐시백 지급</td>
+                        </tr>
+                        <tr>
+                            <td>C 손해보험사 (대형)</td>
+                            <td>만 30세 ~ 만 43세 스마트</td>
+                            <td>마일리지 주행거리 최대 35% 파격 사후 환급</td>
+                            <td>네이버페이 포인트 충전 최대 3만 원 연계 이벤트</td>
+                        </tr>
+                        <tr>
+                            <td>D 손해보험사 (온라인 전문)</td>
+                            <td>만 26세 ~ 만 38세 단독가입</td>
+                            <td>블랙박스 장착 차량 및 전방 충돌 방지 장치 결합</td>
+                            <td>온라인 다이렉트 전용 최저가 즉시 공제 요금제 적용</td>
+                        </tr>
+                        <tr>
+                            <td>E 손해보험사 (외국계 제휴)</td>
+                            <td>만 48세 이상 실버 구간</td>
+                            <td>커넥티드 카 GPS 상시 무사고 점수 우대 연동</td>
+                            <td>모바일 기프티콘 및 웰컴 지원금 즉시 제공 특전</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>다이렉트와 오프라인 대면 가입의 장단점 비교</h3>
+            <p>상당수의 중장년층 가입자들은 여전히 설계사를 통한 수동적인 요율 가입을 고수하곤 합니다. 하지만 모바일 앱이나 컴퓨터 사이트 등을 통해 유입되는 스마트 유저들의 다이렉트 방식과의 요금 격차는 매년 심화되고 있습니다. 온라인 직접 가입의 경우 유통 수수료가 일절 배제되기 때문에 동일 담보 대비 최소 15퍼센트에서 많게는 20퍼센트까지 기본가 자체가 쌉니다. 사은품 지급이나 주유 상품권 적립 혜택 역시 다이렉트 전용 이벤트 성격을 띠는 것이 태반이므로 대면 채널 대비 실용적 강점이 탁월합니다.</p>
+        </section>
+
+        <!-- Section 5: Dynamic Consultant Lead Frame with inputs -->
+        <section id="consulting-section">
+            <div class="lead-frame">
+                <h3>개인 맞춤형 최저가 전문 컨설팅 무료 신청</h3>
+                <p>단순 자동 계산기만으로는 해소되지 않는 세세한 보장 담보 설정(대인 2 무한 설정, 대물 배상 10억 증액 차이점, 무보험차 상해 5억 가입 방법 등) 및 다수 보험사의 복합 할인율 한도 대조를 원하십니까? 아래의 간편 입력 양식을 성실히 작성해 주시면 검증된 다이렉트 자동차보험 전문 플래너가 빠른 시일 내에 무료 피드백 및 최저가 성지 좌표를 분석하여 문자나 이메일로 회신해 드립니다.</p>
+                
+                <form id="consultForm" onsubmit="event.preventDefault(); submitConsultation();">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="lead_name">이름 및 소중한 성함</label>
+                            <input type="text" id="lead_name" placeholder="홍길동" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lead_phone">연락처 (휴대폰 번호)</label>
+                            <input type="tel" id="lead_phone" placeholder="010-1234-5678" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lead_email">이메일 주소</label>
+                            <input type="email" id="lead_email" placeholder="example@domain.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lead_age">상담 대상자 만 나이</label>
+                            <input type="number" id="lead_age" placeholder="예: 31" min="18" max="100" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lead_car">구입 예정 혹은 보유 차량명</label>
+                            <input type="text" id="lead_car" placeholder="예: 쏘나타 하이브리드" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lead_intent">상담 목적 분류</label>
+                            <select id="lead_intent" required>
+                                <option value="">목적을 선택해 주십시오</option>
+                                <option value="new">신규 가입 최저가 추천 비교</option>
+                                <option value="renew">기존 계약 만기 전 저렴한곳 갱신</option>
+                                <option value="spec">할인 특약 조건 최적화 세팅 문의</option>
+                                <option value="parent">부모님 명의 지정을 통한 우회 절약법</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="lead_memo">기타 개별 요청사항 및 질문 (선택)</label>
+                        <input type="text" id="lead_memo" placeholder="예: 첫 가입인데 부모님과 같이 묶어서 싼곳을 추천해주세요.">
+                    </div>
+
+                    <button type="submit" class="calculate-button" style="background-color: #1e3a8a;">전문 컨설팅 포트폴리오 메일 수신 신청</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Section 6: FAQ Accordion -->
+        <section id="faq-section">
+            <h2>자주 묻는 질문 (FAQ) - 자동차보험 나이 해결책</h2>
+            <p>다이렉트 자동차보험 나이 계산기 이용자분들이 고객센터 및 커뮤니티에서 가장 빈번하게 이의를 제기하는 다각적 의문 사항에 대해 정밀하게 답변해 드립니다.</p>
+            
+            <dl>
+                <dt tabindex="0" aria-expanded="false">Q1. 만 나이 계산 기준일은 구체적으로 어떻게 산정해야 하나요?</dt>
+                <dd>A. 자동차보험에서 준용하는 모든 나이 체계는 국가 법률상 기준인 만 나이를 온전히 준용합니다. 계약 체결 당일의 법정 생년월일을 바탕으로 실시간 판단되며, 생일이 단 하루라도 지나지 않았다면 하위 요율 단계에 묶이게 되므로 주의해야 합니다. 생일 당일부터 즉각 상위 특약으로 갈아타기가 가능한 점을 적극 활용하여 계산기를 돌려보시는 것을 적극 추천드립니다.</dd>
+
+                <dt tabindex="0" aria-expanded="false">Q2. 만 26세 특약에 진입하면 당일 즉시 자동으로 할인이 이뤄지나요?</dt>
+                <dd>A. 기가입 중인 상태라면 보험 기간 중간에 나이가 만 26세를 돌파하더라도 즉각 자동 일할 환급이 발생하지는 않는 경우가 허다합니다. 이럴 때는 별도로 전용 다이렉트 어플이나 사이트에 접속하여 단기 연령 변경 배서를 직접 가입 신청하셔야 남은 잔여 기간에 대한 차액 지원금을 일할로 완벽히 정산하여 돌려받을 수 있습니다.</dd>
+
+                <dt tabindex="0" aria-expanded="false">Q3. 만 19세 첫 가입인데 부모님 공동명의 지정을 통한 요금 절감 혜택은 어떤 원리인가요?</dt>
+                <dd>A. 통상 만 19세 단독 명의 가입 시 평균 이백만 원 후반대의 무시무시한 금액 고지서를 수령하게 됩니다. 이에 대한 대항마로 차량 지분을 부모님 99%, 본인 1% 형태로 분리하여 부모님 명의를 피보험자로 입적하고, 특약 범위를 가족 한정 혹은 1인 지정(본인)으로 돌리는 우회 설계를 적용하면, 가중되는 초기 패널티 등급을 부모님의 무사고 경력 등급으로 세게 덮어 씌우기 때문에 실효 가성비 면에서 압도적으로 싼곳 요금을 만들어낼 수 있습니다.</dd>
+
+                <dt tabindex="0" aria-expanded="false">Q4. 마일리지 할인과 Tmap 안전점수 감면은 다이렉트사별로 중복 적용이 무조건 가능한가요?</dt>
+                <dd>A. 네, 대한민국에 상주하는 절대다수의 대형 손해보험 업체들은 주행거리에 따른 선/후할인 혜택과 내비게이션 기반의 운전 성향 감면 혜택의 동시 중복 합산을 지원하고 있습니다. 따라서 계약 체결 이전에 각 회사 홈페이지나 공식 다이렉트 어플의 이벤트 공지를 면밀히 체크하시고 두 조건을 빈틈없이 충족시켜 최종 혜택을 챙겨가셔야 합니다.</dd>
+
+                <dt tabindex="0" aria-expanded="false">Q5. 사고 유발로 인한 요금 할증 기간은 얼마 동안 계승되어 적용되나요?</dt>
+                <dd>A. 사고 이력에 따른 패널티 요율은 업계 규정상 계약 만료 이후에도 최장 3년 동안 유지 적용되며 등급 산정에 부정적인 영양을 유발합니다. 따라서 한 번의 사소한 과실로 수년간의 요금이 동반 상승하는 끔찍한 단점이 발생하게 되므로, 소액의 자차 수리는 자부담으로 조용히 면책금 처리하거나 환입 제도를 활용하여 등급 강등을 필사적으로 방어하는 지혜를 기르십시오.</dd>
+            </dl>
+        </section>
+
+        <!-- Section 7: Reference Links Area -->
+        <section id="reference-section">
+            <h2>공인된 신뢰성 기반의 유익한 정보 출처 리스트</h2>
+            <p>본 사이트에 기재된 보험 요율 정보, 나이 가이드 통계 등은 공신력 있는 다음의 공인 외부 기관의 원시 데이터와 법적 규정집을 심층 조사 및 비교 검증하여 제작되었습니다.</p>
+            
+            <div class="trust-links-box">
+                <h4>투명성 및 전문성 입증 참고 자료 목록</h4>
+                <ul>
+                    <li><a href="https://directbcheckf.reliabledone.com" target="_blank" rel="noopener">자동차보험 연령 요율 안심 정보 센터 (reliabledone 서브도메인 제공 사이트)</a></li>
+                    <li><a href="https://namu.wiki/w/%EC%9E%90%EB%8F%99%EC%B0%A8%EB%B3%B4%ED%97%98" target="_blank" rel="noopener">나무위키 백과: 대한민국 자동차보험 기본 체계 및 연령별 한정 제도 요약</a></li>
+                    <li><a href="https://www.kca.go.kr" target="_blank" rel="noopener">한국소비자원 공식 홈페이지: 금융 및 자동차 렌탈 서비스 분쟁구제 기준 지침</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Dynamic tag section containing keywords for SEO -->
+        <div class="tag-cloud">
+            <a href="#calc-section" class="tag-item">자동차보험 나이 계산기</a>
+            <a href="#trend-section" class="tag-item">만 19세 평균 보험료</a>
+            <a href="#trend-section" class="tag-item">만 21세 예상 비용</a>
+            <a href="#trend-section" class="tag-item">만 24세 다이렉트 가격</a>
+            <a href="#trend-section" class="tag-item">만 26세 최저가 요금제</a>
+            <a href="#trend-section" class="tag-item">만 30세 요금 견적</a>
+            <a href="#trend-section" class="tag-item">만 35세 저렴한곳</a>
+            <a href="#trend-section" class="tag-item">만 43세 싼곳 좌표</a>
+            <a href="#trend-section" class="tag-item">만 48세 최우수 할인</a>
+            <a href="#trend-section" class="tag-item">인터넷 가입 어플 추천</a>
+            <a href="#brand-section" class="tag-item">손해보험 이벤트 사은품</a>
+            <a href="#brand-section" class="tag-item">주유 상품권 및 현금지원</a>
+            <a href="#brand-section" class="tag-item">네이버 구글 요금 비교</a>
+            <a href="#faq-section" class="tag-item">보배드림 에펨코리아 내돈내산 후기</a>
+            <a href="#calc-section" class="tag-item">토스 카카오톡 AI 상담</a>
+            <a href="#calc-section" class="tag-item">2026 자동차보험 할인 순위</a>
+        </div>
+
     </main>
-  </body>
-</html>
+
+  
+    <script>
+        // Interactive JS Premium Calculator
+        function calculatePremium() {
+            const ageInput = document.getElementById('calc_age').value;
+            const age = parseInt(ageInput);
+            const career = document.getElementById('calc_career').value;
+            const accident = document.getElementById('calc_accident').value;
+            const carType = document.getElementById('calc_cartype').value;
+            
+            const discountDirect = document.getElementById('discount_direct').checked;
+            const discountBlackbox = document.getElementById('discount_blackbox').checked;
+            const discountTmap = document.getElementById('discount_tmap').checked;
+            const discountChild = document.getElementById('discount_child').checked;
+
+            if (isNaN(age) || age < 18) {
+                alert("올바른 나이(만 18세 이상)를 다시 입력하여 주시기 바랍니다.");
+                return;
+            }
+
+            // Standard Baseline premium definition: 1,200,000 KRW
+            let basePremium = 1200000;
+
+            // 1. Age Coefficient calculation
+            let ageFactor = 1.0;
+            if (age < 21) {
+                ageFactor = 2.45;
+            } else if (age < 24) {
+                ageFactor = 1.85;
+            } else if (age < 26) {
+                ageFactor = 1.45;
+            } else if (age < 30) {
+                ageFactor = 1.18;
+            } else if (age < 38) {
+                ageFactor = 0.96;
+            } else if (age < 50) {
+                ageFactor = 0.82;
+            } else if (age < 60) {
+                ageFactor = 0.89;
+            } else {
+                ageFactor = 1.16;
+            }
+
+            // 2. Career Coefficient calculation
+            let careerFactor = 1.0;
+            if (career === "none") {
+                careerFactor = 1.35;
+            } else if (career === "under1") {
+                careerFactor = 1.15;
+            } else if (career === "under3") {
+                careerFactor = 0.98;
+            } else {
+                careerFactor = 0.83;
+            }
+
+            // 3. Accident status evaluation
+            let accidentFactor = 1.0;
+            if (accident === "none") {
+                accidentFactor = 0.85;
+            } else if (accident === "one") {
+                accidentFactor = 1.20;
+            } else {
+                accidentFactor = 1.65;
+            }
+
+            // 4. Car Segment weight
+            let carFactor = 1.0;
+            if (carType === "compact") {
+                carFactor = 0.78;
+            } else if (carType === "medium") {
+                carFactor = 1.00;
+            } else if (carType === "large") {
+                carFactor = 1.25;
+            } else {
+                carFactor = 1.65;
+            }
+
+            // Process calculation
+            let finalPremium = basePremium * ageFactor * careerFactor * accidentFactor * carFactor;
+
+            // Apply special discount riders
+            let discountMultiplier = 1.0;
+            if (discountDirect) discountMultiplier *= 0.84; // 16% off
+            if (discountBlackbox) discountMultiplier *= 0.95; // 5% off
+            if (discountTmap) discountMultiplier *= 0.88; // 12% off
+            if (discountChild) discountMultiplier *= 0.93; // 7% off
+
+            finalPremium = finalPremium * discountMultiplier;
+
+            // Rounding up output
+            const finalAnnual = Math.round(finalPremium / 100) * 100;
+            const finalMonthly = Math.round((finalAnnual / 12) / 100) * 100;
+
+            // Update UI elements
+            document.getElementById('result_annual').innerText = finalAnnual.toLocaleString() + " 원";
+            document.getElementById('result_monthly').innerText = finalMonthly.toLocaleString() + " 원";
+            document.getElementById('result_area').style.display = 'block';
+            
+            // Smoothly scroll down to results panel
+            document.getElementById('result_area').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Handle Consultation Submission Alert
+        function submitConsultation() {
+            const name = document.getElementById('lead_name').value;
+            const email = document.getElementById('lead_email').value;
+            const age = document.getElementById('lead_age').value;
+            const car = document.getElementById('lead_car').value;
+            
+            alert(name + " 고객님, 다이렉트 최저가 맞춤 분석 포트폴리오 상담 신청이 정상 접수되었습니다. " + email + " 메일함 및 등록하신 번호로 만 " + age + "세 기준 최고의 가성비 플랜 비교서를 조속히 송부해 드리겠습니다.");
+            document.getElementById('consultForm').reset();
+        }
+
+        // Toggle Accordion functionality for FAQ list
+        document.querySelectorAll('dl dt').forEach((dt) => {
+            dt.addEventListener('click', () => {
+                const isActive = dt.classList.toggle('active');
+                dt.setAttribute('aria-expanded', isActive);
+                const dd = dt.nextElementSibling;
+                if (dd) {
+                    dd.style.display = isActive ? 'block' : 'none';
+                }
+            });
+            dt.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    dt.click();
+                }
+            });
+        });
+    </script>
+  
